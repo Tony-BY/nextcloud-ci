@@ -45,7 +45,7 @@ ingress:
     - host: cloud.k8s-25.sa
       paths:
         - path: /
-  pathType: ImplementationSpecific
+          pathType: ImplementationSpecific
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
