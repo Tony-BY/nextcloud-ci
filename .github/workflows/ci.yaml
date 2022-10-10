@@ -20,9 +20,24 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           tag_prefix: "" 
   
+  docker-lint:
+    name: Docker Lint
+    needs: bump-ver-push-tag
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkecout
+        uses: actions/checkout@v3
+
+      - name: Docker Lint
+        uses: luke142367/Docker-Lint-Action@v1.1.1
+        with:
+          target: ./nextcloud/Dockerfile
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+
   build-and-push-image:
     name: Build and push image 
-    needs: bump-ver-push-tag
+    needs: [bump-ver-push-tag, docker-lint]
     runs-on: ubuntu-latest
     steps:
       - name: Checkecout
@@ -41,9 +56,30 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/nextcloud:${{ needs.bump-ver-push-tag.outputs.tag }}
   
+  generate-chart:
+    name: Generate Chart
+    needs: bump-ver-push-tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkecout
+        uses: actions/checkout@v3
+
+      - name: Update appVersion & Chart version
+        run: |
+          sed -i "s/^version:.*$/version: ${{ needs.bump-ver-push-tag.outputs.tag }}/" ./charts/nextcloud/Chart.yaml
+          sed -i "s/^appVersion:.*$/appVersion: ${{ needs.bump-ver-push-tag.outputs.tag }}/" ./charts/nextcloud/Chart.yaml
+
+      - name: Commit changes
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git add .
+          git commit -m "Update Chart to ${{ needs.bump-ver-push-tag.outputs.tag }} by GitHub Actions"
+          git push origin main
+  
   lint-helm:
     name: Helm Lint
-    needs: bump-ver-push-tag
+    needs: generate-chart
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -66,31 +102,34 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          ref: 'main'
+          path: 'main'
 
-      - name: Configure Git
-        run: |
-          git config user.name "$GITHUB_ACTOR"
-          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: 'gh-pages'
+          path: 'gh-pages'
 
       - name: Install Helm
         uses: Azure/setup-helm@v3
         with:
           version: v3.10.0
 
-      - name: Update appVersion
-        run: |
-          sed -i "s/^version:.*$/version: ${{ needs.bump-ver-push-tag.outputs.tag }}/" ./charts/nextcloud/Chart.yaml
-          sed -i "s/^appVersion:.*$/appVersion: ${{ needs.bump-ver-push-tag.outputs.tag }}/" ./charts/nextcloud/Chart.yaml
+      - name: Sync Repo
+        run: cd main && sh sync.sh
 
-      - name: Generate Chart
+      - name: Move folder
         run: |
-          helm package ./charts/nextcloud
-          helm repo index --url https://tony-by.github.io/nextcloud-ci/releases --merge index.yaml .
-          mv -f nextcloud-* ./releases
+          mv main/gh-pages/* gh-pages
+          cd gh-pages
+          ls -ll
+          helm repo index --url https://tony-by.github.io/nextcloud-ci/ --merge index.yaml .
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git add .
-          git commit -m "Chart release version ${{ needs.bump-ver-push-tag.outputs.tag }}"
-          git push origin main
+          git diff --quiet && git diff --staged --quiet || git commit -m "Chart release ${{ needs.bump-ver-push-tag.outputs.tag }}" -m "${{ github.event.head_commit.message }}"       
+          git push
   
   slackNotification:
     name: Slack notofication
@@ -103,7 +142,7 @@ jobs:
           SLACK_CHANNEL: notifications
           SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '
           SLACK_ICON: https://github.com/rtCamp.png?size=48
-          SLACK_MESSAGE: 'Nextcloud chart release v${{ needs.bump-ver-push-tag.outputs.tag }} Status: ${{ job.status }} :rocket:'
+          SLACK_MESSAGE: 'Nextcloud release v${{ needs.bump-ver-push-tag.outputs.tag }} Status: ${{ job.status }} :rocket:'
           SLACK_TITLE: Chart Release
           SLACK_USERNAME: rtCamp
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
