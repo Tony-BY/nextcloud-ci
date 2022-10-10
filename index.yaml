@@ -1,0 +1,15 @@
+apiVersion: v1
+entries:
+  nextcloud:
+  - apiVersion: v2
+    appVersion: 0.0.4
+    created: "2022-10-10T18:53:51.924821699Z"
+    description: Project SA-nextcloud
+    digest: e73ba691ebb8898883d95bc8adcce6ca4cab689ee6e6be9fcba626f3eed98153
+    icon: https://icons.iconarchive.com/icons/papirus-team/papirus-apps/256/nextcloud-icon.png
+    name: nextcloud
+    type: application
+    urls:
+    - https://tony-by.github.io/nextcloud-ci/nextcloud-0.0.4.tgz
+    version: 0.0.4
+generated: "2022-10-10T18:53:51.923615175Z"
