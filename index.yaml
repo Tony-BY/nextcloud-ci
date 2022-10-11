@@ -2,8 +2,19 @@ apiVersion: v1
 entries:
   nextcloud:
   - apiVersion: v2
+    appVersion: 0.0.6
+    created: "2022-10-11T06:52:06.559722814Z"
+    description: Project SA-nextcloud
+    digest: 23b8d62c5dfef756bca7073c751202b80ac3ebc432f5f15428e0aed05f70cc9d
+    icon: https://icons.iconarchive.com/icons/papirus-team/papirus-apps/256/nextcloud-icon.png
+    name: nextcloud
+    type: application
+    urls:
+    - https://tony-by.github.io/nextcloud-ci/nextcloud-0.0.6.tgz
+    version: 0.0.6
+  - apiVersion: v2
     appVersion: 0.0.5
-    created: "2022-10-11T06:40:16.952766396Z"
+    created: "2022-10-11T06:52:06.559263793Z"
     description: Project SA-nextcloud
     digest: 9d6c70924ff3a091d03acba844d40d22820e601c117c0e71d1802c7c41635346
     icon: https://icons.iconarchive.com/icons/papirus-team/papirus-apps/256/nextcloud-icon.png
@@ -14,7 +25,7 @@ entries:
     version: 0.0.5
   - apiVersion: v2
     appVersion: 0.0.4
-    created: "2022-10-11T06:40:16.952052798Z"
+    created: "2022-10-11T06:52:06.558769372Z"
     description: Project SA-nextcloud
     digest: e73ba691ebb8898883d95bc8adcce6ca4cab689ee6e6be9fcba626f3eed98153
     icon: https://icons.iconarchive.com/icons/papirus-team/papirus-apps/256/nextcloud-icon.png
@@ -23,4 +34,4 @@ entries:
     urls:
     - https://tony-by.github.io/nextcloud-ci/nextcloud-0.0.4.tgz
     version: 0.0.4
-generated: "2022-10-11T06:40:16.950776301Z"
+generated: "2022-10-11T06:52:06.557275705Z"
