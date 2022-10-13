@@ -123,8 +123,8 @@ RUN a2enmod headers rewrite remoteip ;\
     a2enconf remoteip
 
 #ENV NEXTCLOUD_VERSION 24.0.1
-ENV NEXTCLOUD_VERSION 24.0.5
-#ENV NEXTCLOUD_VERSION 24.0.6
+#ENV NEXTCLOUD_VERSION 24.0.5
+ENV NEXTCLOUD_VERSION 24.0.6
 
 RUN set -ex; \
     fetchDeps=" \
