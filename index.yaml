@@ -2,8 +2,19 @@ apiVersion: v1
 entries:
   nextcloud:
   - apiVersion: v2
+    appVersion: 0.0.12
+    created: "2022-10-15T08:29:55.071552531Z"
+    description: Project SA-nextcloud
+    digest: 60f6dd14fbe9dfdf3659f5ccf685099a24103bf8347de2c2f75906a73210855f
+    icon: https://icons.iconarchive.com/icons/papirus-team/papirus-apps/256/nextcloud-icon.png
+    name: nextcloud
+    type: application
+    urls:
+    - https://tony-by.github.io/nextcloud-ci/nextcloud-0.0.12.tgz
+    version: 0.0.12
+  - apiVersion: v2
     appVersion: 0.0.11
-    created: "2022-10-13T16:28:02.954337645Z"
+    created: "2022-10-15T08:29:55.070921124Z"
     description: Project SA-nextcloud
     digest: 2cd8bf4e95c113041e4896225d2d303f2961a8f6885db99813318bc2d4fc261d
     icon: https://icons.iconarchive.com/icons/papirus-team/papirus-apps/256/nextcloud-icon.png
@@ -14,7 +25,7 @@ entries:
     version: 0.0.11
   - apiVersion: v2
     appVersion: 0.0.10
-    created: "2022-10-13T16:28:02.953842208Z"
+    created: "2022-10-15T08:29:55.070319818Z"
     description: Project SA-nextcloud
     digest: 1afc989890eb78b0d2010715153138cb8d2e29c6303e212dd9b776096a94a412
     icon: https://icons.iconarchive.com/icons/papirus-team/papirus-apps/256/nextcloud-icon.png
@@ -25,7 +36,7 @@ entries:
     version: 0.0.10
   - apiVersion: v2
     appVersion: 0.0.9
-    created: "2022-10-13T16:28:02.95696384Z"
+    created: "2022-10-15T08:29:55.076244179Z"
     description: Project SA-nextcloud
     digest: aff37c8557c2bb2cb6f8b1b3a6f01583e220398fbcf90c32c9122b73fcfd184a
     icon: https://icons.iconarchive.com/icons/papirus-team/papirus-apps/256/nextcloud-icon.png
@@ -36,7 +47,7 @@ entries:
     version: 0.0.9
   - apiVersion: v2
     appVersion: 0.0.8
-    created: "2022-10-13T16:28:02.956543809Z"
+    created: "2022-10-15T08:29:55.075529372Z"
     description: Project SA-nextcloud
     digest: 80c0a942243b0a6bc65ff4fe9e6dbe10da2f1fbed0606ca89460c8c637d3ad34
     icon: https://icons.iconarchive.com/icons/papirus-team/papirus-apps/256/nextcloud-icon.png
@@ -47,7 +58,7 @@ entries:
     version: 0.0.8
   - apiVersion: v2
     appVersion: 0.0.7
-    created: "2022-10-13T16:28:02.956136078Z"
+    created: "2022-10-15T08:29:55.074784264Z"
     description: Project SA-nextcloud
     digest: f6a18939976b8146bdeb8dcc07a1a6f0a2ba0354609be21bbaf587dd633c363f
     icon: https://icons.iconarchive.com/icons/papirus-team/papirus-apps/256/nextcloud-icon.png
@@ -58,7 +69,7 @@ entries:
     version: 0.0.7
   - apiVersion: v2
     appVersion: 0.0.6
-    created: "2022-10-13T16:28:02.955689145Z"
+    created: "2022-10-15T08:29:55.073905755Z"
     description: Project SA-nextcloud
     digest: 23b8d62c5dfef756bca7073c751202b80ac3ebc432f5f15428e0aed05f70cc9d
     icon: https://icons.iconarchive.com/icons/papirus-team/papirus-apps/256/nextcloud-icon.png
@@ -69,7 +80,7 @@ entries:
     version: 0.0.6
   - apiVersion: v2
     appVersion: 0.0.5
-    created: "2022-10-13T16:28:02.955243112Z"
+    created: "2022-10-15T08:29:55.073199348Z"
     description: Project SA-nextcloud
     digest: 9d6c70924ff3a091d03acba844d40d22820e601c117c0e71d1802c7c41635346
     icon: https://icons.iconarchive.com/icons/papirus-team/papirus-apps/256/nextcloud-icon.png
@@ -80,7 +91,7 @@ entries:
     version: 0.0.5
   - apiVersion: v2
     appVersion: 0.0.4
-    created: "2022-10-13T16:28:02.954789878Z"
+    created: "2022-10-15T08:29:55.072227138Z"
     description: Project SA-nextcloud
     digest: e73ba691ebb8898883d95bc8adcce6ca4cab689ee6e6be9fcba626f3eed98153
     icon: https://icons.iconarchive.com/icons/papirus-team/papirus-apps/256/nextcloud-icon.png
@@ -89,4 +100,4 @@ entries:
     urls:
     - https://tony-by.github.io/nextcloud-ci/nextcloud-0.0.4.tgz
     version: 0.0.4
-generated: "2022-10-13T16:28:02.95320436Z"
+generated: "2022-10-15T08:29:55.06948431Z"
